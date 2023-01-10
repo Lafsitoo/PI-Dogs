@@ -1,7 +1,7 @@
 const axios = require("axios");
 const API_ALL_URL = "https://api.thedogapi.com/v1/breeds";
 // Traigo los modelos
-const { Dog, Temperament } = require("../models");
+const { Dog, Temperament } = require("../db");
 
 // DATOS (API)
 const getApiAll = async () => {
