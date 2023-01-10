@@ -41,7 +41,7 @@ const getInfoDb = async () => {
 
 // UNION DE DATOS
 const getAllDogs = async () => {
-  const apiInfo = await getAllApi();
+  const apiInfo = await getApiAll();
   const dbInfo = await getInfoDb();
   const allDogs = apiInfo.concat(dbInfo);
   return allDogs;
