@@ -1,5 +1,7 @@
 const { Router } = require("express");
 const { getAllDogs } = require("../controllers");
+const Dog = require("../models/Dog");
+const Temperament = require("../models/Temperament");
 const router = Router();
 
 // OBTENER TODOS LOS PERROS
@@ -38,14 +40,54 @@ router.get("/:id", async (req, res) => {
       const dogID = await dogsTotal.filter((e) => e.id == id);
       dogID.length
         ? res.status(200).send(dogID)
-        : res.status(404).send({ error: "La ID no esta relacionada a ningún ejemplar" });
+        : res
+            .status(404)
+            .send({ error: "La ID no esta relacionada a ningún ejemplar" });
     }
   } catch (error) {
     res.status(404).send({ error: error.message });
   }
 });
 
-router.post("/", async (req, res) => {});
+// CREAR NUEVO PERRO
+router.post("/", async (req, res) => {
+  // Obtiene los datos de la solicitud
+  const {
+    name,
+    height_min,
+    height_max,
+    weight_min,
+    weight_max,
+    life_span,
+    temperament,
+    createdInDb,
+  } = req.body;
+  try {
+    // Crea una nuevo perro en la base de datos
+    const dog = await Dog.create({
+      name,
+      height_min,
+      height_max,
+      weight_min,
+      weight_max,
+      life_span,
+      createdInDb,
+    });
+
+    // Busco temperament en BD
+    const temperamentInBD = await Temperament.findAll({
+      where: { name: temperament },
+    });
+
+    // Asociamos el Dog al Temperament para completarlo
+    dog.addTemperament(temperamentInBD);
+
+    // Devolvemos una respuesta de éxito
+    res.status(201).send(`${name} Creado con Éxito`);
+  } catch (error) {
+    res.status(400).send({ error: "Error al crear nuevo perro" });
+  }
+});
 
 // Exportamos
 module.exports = router;
