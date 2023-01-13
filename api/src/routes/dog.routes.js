@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { getAllDogs } = require("../controllers");
 const { Dog, Temperament } = require("../db");
+const validateDogs = require("../middlewares");
 const router = Router();
 
 // OBTENER TODOS LOS PERROS
@@ -49,7 +50,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // CREAR NUEVO PERRO
-router.post("/", async (req, res) => {
+router.post("/", validateDogs, async (req, res) => {
   // Obtiene los datos de la solicitud
   const {
     name,
