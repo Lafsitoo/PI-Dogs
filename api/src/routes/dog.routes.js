@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const { getAllDogs } = require("../controllers");
-const Dog = require("../models/Dog");
-const Temperament = require("../models/Temperament");
+const { Dog, Temperament } = require("../db");
 const router = Router();
 
 // OBTENER TODOS LOS PERROS

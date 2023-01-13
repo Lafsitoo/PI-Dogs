@@ -1,7 +1,11 @@
 const { Router } = require('express');
+const Temperament = require('../models/Temperament');
 const router = Router();
 
-router.get("/", async (req, res) => {})
+// OOBTENER TODOS LOS TEMPERAMENTS
+router.get("/", async (req, res) => {
+    
+})
 
 // Exportamos
 module.exports = router;
