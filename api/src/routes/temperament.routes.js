@@ -10,8 +10,9 @@ router.get("/", async (req, res) => {
   const apiInfo = await axios(API_URL);
   try {
     const base = await apiInfo.data.map((el) => el.temperament);
-    // Separamos
+    // Separamos 
     const split = await base.join().split(",")
+    // Eliminamos espacios en blanco
     const temperaments = await split.map(el => el.trim())
     // Guardamos en DB
     temperaments.forEach((el) => {
