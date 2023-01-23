@@ -1,5 +1,5 @@
 import "./Home.css";
 
-function Home() {}
+const Home = () => {}
 
 export { Home };

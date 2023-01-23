@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Landing.css";
 
-function Landing() {
+const Landing = () => {
   return (
     <div>
       <Link to="/home">
@@ -9,6 +9,6 @@ function Landing() {
       </Link>
     </div>
   );
-}
+};
 
 export { Landing };
