@@ -6,10 +6,10 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route index element={ <Landing /> } />
+        {/* <Route path={"/"} element={X} />
         <Route path={"/"} element={X} />
         <Route path={"/"} element={X} />
-        <Route path={"/"} element={X} />
-        <Route path={"/"} element={X} />
+        <Route path={"/"} element={X} /> */}
       </Routes>
     </BrowserRouter>
   );
