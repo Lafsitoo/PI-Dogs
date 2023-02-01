@@ -13,4 +13,4 @@ export default configureStore({
     }),
 });
 
-// La comprobación de serializabilidad es una característica de Redux Toolkit que ayuda a detectar y prevenir errores de estado no serializable en tiempo de desarrollo.
+// La "comprobación de serializabilidad" es una característica de Redux Toolkit que ayuda a detectar y prevenir errores de estado no serializable en tiempo de desarrollo.
