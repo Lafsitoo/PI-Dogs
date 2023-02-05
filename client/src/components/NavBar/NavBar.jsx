@@ -8,17 +8,17 @@ const NavBar = () => {
             <nav>
             <div>
                 <Link to="/">
-                    <button></button>
+                    <button>Landing</button>
                 </Link>
             </div>
             <div>
-                <Link to="/dogs">
-                    <button></button>
+                <Link to="/home">
+                    <button>Home</button>
                 </Link>
             </div>
             <div>
                 <Link to="/about">
-                    <button></button>
+                    <button>About</button>
                 </Link>
             </div>
             </nav>

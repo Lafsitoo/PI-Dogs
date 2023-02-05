@@ -1,16 +1,25 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { searchDogs } from "../../redux/actions";
 import "./SearchBar.css";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(searchDogs(input));
+    setInput("");
+  };
+
   return (
-    <form>
+    <form onSubmit={(e) => handleSubmit(e)}>
       <input
         type="text"
         value={input}
@@ -18,7 +27,9 @@ const SearchBar = () => {
         placeholder="Buscar..."
         onChange={(e) => handleInputChange(e)}
       ></input>
-      <input type="submit"></input>
+      <button type="submit" onSubmit={(e) => handleSubmit(e)}>
+        Search
+      </button>
     </form>
   );
 };

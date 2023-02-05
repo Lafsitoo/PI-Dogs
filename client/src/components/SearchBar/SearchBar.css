@@ -1,0 +1,8 @@
+button[type="submit"] {
+    padding: 0.5rem 1rem;
+    background-color: lightgray;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
