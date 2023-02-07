@@ -1,4 +1,4 @@
-import { SEARCH_DOGS } from "../constants";
+import { ALL_DOGS, SEARCH_DOGS } from "../constants";
 
 const initialState = {
   dogs: [],
@@ -6,6 +6,12 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ALL_DOGS:
+      return {
+        ...state,
+        dogs: action.payload,
+      };
+
     case SEARCH_DOGS:
       return {
         ...state,

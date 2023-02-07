@@ -12,16 +12,16 @@ const Home = () => {
   const allDogs = useSelector((state) => state.dogs);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardPerPage] = useState(8);
+  const [cardPerPage, setCardPerPage] = useState(8);
 
   const indexOfLastCard = currentPage * cardPerPage;
   const indexOfFirstCard = indexOfLastCard - cardPerPage;
 
-  const current = allDogs.slice(indexOfFirstCard, indexOfLastCard);
+  const currentDogs = allDogs.slice(indexOfFirstCard, indexOfLastCard);
 
   useEffect(() => {
     dispatch(getAllDogs());
-  }, [dispatch]);
+  }, []);
 
   return (
     <main className="home">
@@ -33,15 +33,13 @@ const Home = () => {
       </div>
       <SearchBar />
 
-      <section>
-        {current?.map((e) => {
+      <div>
+        {currentDogs?.map((e) => {
           return (
-            <Link>
-              <Card name={e.name} image={e.image} />
-            </Link>
+              <Card key={e.id} name={e.name} image={e.image} />
           );
         })}
-      </section>
+      </div>
     </main>
   );
 };

@@ -18,7 +18,7 @@ const SearchBar = () => {
 
   return (
     <form className="searchBar" onSubmit={(e) => handleSubmit(e)}>
-      {!clear && <i class="fi fi-br-search"></i>}
+      {!clear && <i className="fi fi-br-search"></i>}
       <input
         type="text"
         value={input}
@@ -27,7 +27,7 @@ const SearchBar = () => {
         onChange={(e) => setInput(e.target.value)}
         onFocus={() => setClear(false)}
       ></input>
-      {clear && <i class="fi fi-br-cross-circle"></i>}
+      {clear && <i className="fi fi-br-cross-circle"></i>}
     </form>
   );
 };
