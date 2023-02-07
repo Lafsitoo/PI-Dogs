@@ -1,34 +1,33 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchDogs } from "../../redux/actions";
 import "./SearchBar.css";
 
 const SearchBar = () => {
+  const filterSearch = useSelector((state) => state.filterSearch);
   const [input, setInput] = useState("");
+  const [clear, setClear] = useState(filterSearch === "" ? false : true);
   const dispatch = useDispatch();
-
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    setInput(e.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchDogs(input));
     setInput("");
+    setClear(true);
   };
 
   return (
     <form className="searchBar" onSubmit={(e) => handleSubmit(e)}>
-      <i class="fi fi-br-search"></i>
+      {!clear && <i class="fi fi-br-search"></i>}
       <input
         type="text"
         value={input}
         className="searchInput"
         placeholder="Buscar..."
-        onChange={(e) => handleInputChange(e)}
+        onChange={(e) => setInput(e.target.value)}
+        onFocus={() => setClear(false)}
       ></input>
-      <i class="fi fi-br-cross-circle"></i>
+      {clear && <i class="fi fi-br-cross-circle"></i>}
     </form>
   );
 };

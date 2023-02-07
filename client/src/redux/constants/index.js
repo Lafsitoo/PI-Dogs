@@ -1,3 +1,4 @@
 const SEARCH_DOGS = "SEARCH_DOGS";
+const ALL_DOGS = "ALL_DOGS"
 
-export { SEARCH_DOGS };
+export { SEARCH_DOGS, ALL_DOGS };
