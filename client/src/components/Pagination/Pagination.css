@@ -1,0 +1,12 @@
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline-end: 40px;
+}
+
+li {
+  display: inline-block;
+  margin: 5px;
+  list-style: none;
+}
