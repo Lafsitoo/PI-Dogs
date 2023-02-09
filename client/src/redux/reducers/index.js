@@ -1,8 +1,16 @@
-import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, order, FILTER } from "../constants";
+import {
+  ALL_DOGS,
+  SEARCH_DOGS,
+  ORDER_SORT,
+  order,
+  FILTER,
+  TEMPERAMENT, GET_TEMPERAMENTS
+} from "../constants";
 
 const initialState = {
   dogs: [],
   allDogs: [],
+  temperaments: [],
   order: order[0],
 };
 
@@ -12,8 +20,14 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: action.payload,
-        allDogs: action.payload
+        allDogs: action.payload,
       };
+
+    case GET_TEMPERAMENTS:
+      return {
+        ...state,
+        temperaments: action.payload
+      }
 
     case SEARCH_DOGS:
       return {
@@ -27,7 +41,7 @@ const rootReducer = (state = initialState, action) => {
         dogs: state.dogs.slice().sort(action.payload.sort),
         order: order[action.payload.id],
       };
-    
+
     case FILTER:
       const allSource = state.allDogs;
       const filterBySource =
@@ -36,8 +50,21 @@ const rootReducer = (state = initialState, action) => {
           : allSource.filter((el) => !el.createdInDb);
       return {
         ...state,
-        dogs: action.payload === "All dogs" ? allSource : filterBySource
+        dogs: action.payload === "All dogs" ? allSource : filterBySource,
       };
+
+    case TEMPERAMENT:
+      const temperament = state.allDogs;
+      const filterByTemperament =
+        action.payload === "Default"
+          ? temperament
+          : temperament.filter((e) =>
+              e.temperament?.includes(action.payload)
+            );
+            return {
+              ...state,
+              dogs: filterByTemperament
+            }
 
     default:
       return {

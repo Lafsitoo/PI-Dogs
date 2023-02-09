@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, FILTER } from "../constants/index";
+import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, FILTER, TEMPERAMENT, GET_TEMPERAMENTS } from "../constants/index";
 const url = "http://localhost:3001";
 
 export const getAllDogs = () => {
@@ -12,6 +12,17 @@ export const getAllDogs = () => {
     });
   };
 };
+
+export const getTemperaments = () => {
+  return async (dispatch) => {
+    const json = await axios(`${url}/temperaments`)
+    const temperaments = json.data
+    dispatch({
+      type: GET_TEMPERAMENTS,
+      payload: temperaments
+    })
+  }
+}
 
 export const searchDogs = (name) => {
   return async (dispatch) => {
@@ -36,3 +47,10 @@ export const filter = (payload) => {
     payload
   };
 };
+
+export const filterTemperament = (payload) => {
+  return {
+    type: TEMPERAMENT,
+    payload
+  }
+}

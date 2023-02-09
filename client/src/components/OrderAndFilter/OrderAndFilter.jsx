@@ -1,6 +1,6 @@
 import "./OrderAndFilter.css";
-import { order } from "../../redux/constants";
-import { orderSort, filter } from "../../redux/actions";
+import { order, allTemperaments } from "../../redux/constants";
+import { orderSort, filter, filterTemperament } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ const OrderAndFilter = () => {
   const [orderOption, setOrderOption] = useState(0);
   // Estado para el filtrado
   const [filterOption, setFilterOption] = useState("");
+  const [temperament, setTemperament] = useState("Default");
 
   // Cambiar la selección de ordenamiento
   const handleOrder = (e) => {
@@ -27,6 +28,11 @@ const OrderAndFilter = () => {
     dispatch(filter(e.target.value));
   };
 
+  const handleTemperament = (e) => {
+    setTemperament(e.target.value)
+    dispatch(filterTemperament(e.target.value))
+  }
+
   return (
     <div>
       {/* Etiqueta de label para el control desplegable */}
@@ -43,11 +49,7 @@ const OrderAndFilter = () => {
 
       {/* Nuevo control desplegable para el filtrado */}
       <label htmlFor="filter">Filter by:</label>
-      <select
-        id="filter"
-        value={filterOption}
-        onChange={handleFilter}
-      >
+      <select id="filter" value={filterOption} onChange={handleFilter}>
         <option key={"All dogs"} value="All dogs">
           All dogs
         </option>
@@ -57,6 +59,23 @@ const OrderAndFilter = () => {
         <option key={"Created by API"} value="Created by API">
           Created by API
         </option>
+      </select>
+
+      {/* Nuevo control desplegable para el filtrado */}
+      <label htmlFor="filterTemperament">Temperament by:</label>
+      <select
+        id="filterTemperament"
+        value={temperament}
+        onChange={handleTemperament}
+      >
+        <option key={"Default"} value="Default">
+          Default
+        </option>
+        {allTemperaments.map((option) => (
+          <option key={option.id} value={option.name}>
+            {option.name}
+          </option>
+        ))}
       </select>
     </div>
   );
