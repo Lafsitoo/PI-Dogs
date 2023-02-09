@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllDogs } from "../../redux/actions";
 import "./Home.css";
+import { OrderAndFilter } from "../../components/OrderAndFilter/OrderAndFilter";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,8 @@ const Home = () => {
         </Link>
       </div>
       <SearchBar />
+
+      <OrderAndFilter />
 
       <Pagination
         cardPerPage={cardPerPage}

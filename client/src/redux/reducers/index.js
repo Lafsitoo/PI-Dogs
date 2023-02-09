@@ -1,7 +1,8 @@
-import { ALL_DOGS, SEARCH_DOGS } from "../constants";
+import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, order } from "../constants";
 
 const initialState = {
   dogs: [],
+  order: order[0],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -16,6 +17,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: action.payload,
+      };
+
+    case ORDER_SORT:
+      return {
+        ...state,
+        dogs: state.dogs.slice().sort(action.payload.sort),
+        order: order[action.payload.id],
       };
 
     default:
