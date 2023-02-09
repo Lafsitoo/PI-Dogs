@@ -1,9 +1,9 @@
-import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, order, FILTER, origin } from "../constants";
+import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, order, FILTER } from "../constants";
 
 const initialState = {
   dogs: [],
+  allDogs: [],
   order: order[0],
-  filter: origin[0]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -12,6 +12,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         dogs: action.payload,
+        allDogs: action.payload
       };
 
     case SEARCH_DOGS:
@@ -28,9 +29,14 @@ const rootReducer = (state = initialState, action) => {
       };
     
     case FILTER:
+      const allSource = state.allDogs;
+      const filterBySource =
+        action.payload === "Created by Users"
+          ? allSource.filter((el) => el.createdInDb)
+          : allSource.filter((el) => !el.createdInDb);
       return {
         ...state,
-        filterByOrigin: action.origin,
+        dogs: action.payload === "All dogs" ? allSource : filterBySource
       };
 
     default:

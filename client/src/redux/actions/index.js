@@ -30,9 +30,9 @@ export const orderSort = (payload) => {
   };
 };
 
-export const filter = (origin) => {
+export const filter = (payload) => {
   return {
     type: FILTER,
-    origin
+    payload
   };
 };

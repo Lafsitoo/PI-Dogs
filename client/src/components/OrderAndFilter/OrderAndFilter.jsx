@@ -1,5 +1,5 @@
 import "./OrderAndFilter.css";
-import { order, origin } from "../../redux/constants";
+import { order } from "../../redux/constants";
 import { orderSort, filter } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -9,7 +9,7 @@ const OrderAndFilter = () => {
   // Estado local para mantener el índice de la opción seleccionada
   const [orderOption, setOrderOption] = useState(0);
   // Estado para el filtrado
-  const [filterOption, setFilterOption] = useState(0);
+  const [filterOption, setFilterOption] = useState("");
 
   // Cambiar la selección de ordenamiento
   const handleOrder = (e) => {
@@ -24,7 +24,7 @@ const OrderAndFilter = () => {
     // Actualiza estado
     setFilterOption(e.target.value);
     // Despachar la seleción
-    dispatch(filter(origin[e.target.value].filter));
+    dispatch(filter(e.target.value));
   };
 
   return (
@@ -43,12 +43,20 @@ const OrderAndFilter = () => {
 
       {/* Nuevo control desplegable para el filtrado */}
       <label htmlFor="filter">Filter by:</label>
-      <select id="filter" value={filterOption} onChange={handleFilter}>
-        {origin.map((option, index) => (
-          <option key={option.id} value={index}>
-            {option.name}
-          </option>
-        ))}
+      <select
+        id="filter"
+        value={filterOption}
+        onChange={handleFilter}
+      >
+        <option key={"All dogs"} value="All dogs">
+          All dogs
+        </option>
+        <option key={"Created by Users"} value="Created by Users">
+          Created by Users
+        </option>
+        <option key={"Created by API"} value="Created by API">
+          Created by API
+        </option>
       </select>
     </div>
   );
