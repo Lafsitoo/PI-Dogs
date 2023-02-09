@@ -1,8 +1,9 @@
-import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, order } from "../constants";
+import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, order, FILTER, origin } from "../constants";
 
 const initialState = {
   dogs: [],
   order: order[0],
+  filter: origin[0]
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -24,6 +25,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogs: state.dogs.slice().sort(action.payload.sort),
         order: order[action.payload.id],
+      };
+    
+    case FILTER:
+      return {
+        ...state,
+        filterByOrigin: action.origin,
       };
 
     default:

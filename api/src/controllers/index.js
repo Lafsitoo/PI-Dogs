@@ -12,10 +12,8 @@ const getApiAll = async () => {
       id: el.id,
       name: el.name,
       image: el.image.url,
-      height_min: parseInt(el.height.metric.split("-")[0]),
-      height_max: parseInt(el.height.metric.split("-")[1]),
-      weight_min: parseInt(el.weight.metric.split("-")[0]),
-      weight_max: parseInt(el.weight.metric.split("-")[1]),
+      weight: el.weight.metric,
+      height: el.height.metric,
       life_span: el.life_span,
       temperament: el.temperament,
     };

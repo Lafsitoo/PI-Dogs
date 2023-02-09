@@ -4,10 +4,8 @@ const validateDogs = async (req, res, next) => {
   // Info pedida
   const {
     name,
-    height_min,
-    height_max,
-    weight_min,
-    weight_max,
+    height,
+    weight,
     life_span,
     temperament
   } = req.body;
@@ -15,10 +13,8 @@ const validateDogs = async (req, res, next) => {
   //VALIDACIÓN
   if (
     !(name,
-    height_min,
-    height_max,
-    weight_min,
-    weight_max,
+    height,
+    weight,
     life_span)
   ) {
     return res.status(404).send({ error: "Faltan parámetros obligatorios" });

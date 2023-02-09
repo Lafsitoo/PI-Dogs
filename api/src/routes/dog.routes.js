@@ -54,10 +54,8 @@ router.post("/", validateDogs, async (req, res) => {
   // Obtiene los datos de la solicitud
   const {
     name,
-    height_min,
-    height_max,
-    weight_min,
-    weight_max,
+    height,
+    weight,
     life_span,
     temperament,
     createdInDb,
@@ -66,10 +64,8 @@ router.post("/", validateDogs, async (req, res) => {
     // Crea una nuevo perro en la base de datos
     const dog = await Dog.create({
       name,
-      height_min,
-      height_max,
-      weight_min,
-      weight_max,
+      height,
+      weight,
       life_span,
       createdInDb,
     });

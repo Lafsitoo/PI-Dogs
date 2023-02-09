@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT } from "../constants/index";
+import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, FILTER } from "../constants/index";
 const url = "http://localhost:3001";
 
 export const getAllDogs = () => {
@@ -27,5 +27,12 @@ export const orderSort = (payload) => {
   return {
     type: ORDER_SORT,
     payload,
+  };
+};
+
+export const filter = (origin) => {
+  return {
+    type: FILTER,
+    origin
   };
 };
