@@ -30,7 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllDogs());
-    dispatch(getTemperaments())
+    dispatch(getTemperaments());
   }, []);
 
   return (
@@ -54,7 +54,11 @@ const Home = () => {
 
       <div>
         {currentDogs?.map((e) => {
-          return <Card key={e.id} name={e.name} image={e.image} />;
+          return (
+            <Link to={`/dogs/${e.id}`}>
+              <Card key={e.id} name={e.name} image={e.image} temperament={e.temperament} weight={e.weight}/>
+            </Link>
+          );
         })}
       </div>
     </main>
