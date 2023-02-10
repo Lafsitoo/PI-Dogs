@@ -1,7 +1,7 @@
 import "./OrderAndFilter.css";
-import { order, allTemperaments } from "../../redux/constants";
+import { order } from "../../redux/constants";
 import { orderSort, filter, filterTemperament } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 const OrderAndFilter = () => {
@@ -11,6 +11,8 @@ const OrderAndFilter = () => {
   // Estado para el filtrado
   const [filterOption, setFilterOption] = useState("");
   const [temperament, setTemperament] = useState("Default");
+  // Obtener los names de temperaments desde el estado inicial
+  const allTemperaments = useSelector(state => state.temperaments)
 
   // Cambiar la selección de ordenamiento
   const handleOrder = (e) => {
@@ -68,7 +70,7 @@ const OrderAndFilter = () => {
         value={temperament}
         onChange={handleTemperament}
       >
-        <option key={"Default"} value="Default">
+        <option key={"All temperaments"} value="All temperaments">
           Default
         </option>
         {allTemperaments.map((option) => (

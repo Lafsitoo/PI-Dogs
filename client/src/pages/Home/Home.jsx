@@ -5,7 +5,7 @@ import { Card } from "../../components/Card/Card";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllDogs } from "../../redux/actions";
+import { getAllDogs, getTemperaments } from "../../redux/actions";
 import "./Home.css";
 import { OrderAndFilter } from "../../components/OrderAndFilter/OrderAndFilter";
 
@@ -30,6 +30,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getAllDogs());
+    dispatch(getTemperaments())
   }, []);
 
   return (
