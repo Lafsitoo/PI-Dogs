@@ -1,5 +1,14 @@
 import axios from "axios";
-import { ALL_DOGS, SEARCH_DOGS, ORDER_SORT, FILTER, TEMPERAMENT, GET_TEMPERAMENTS } from "../constants/index";
+import {
+  ALL_DOGS,
+  SEARCH_DOGS,
+  ORDER_SORT,
+  FILTER,
+  TEMPERAMENT,
+  GET_TEMPERAMENTS,
+  GET_DETAILS,
+  GET_CLEAN
+} from "../constants/index";
 const url = "http://localhost:3001";
 
 export const getAllDogs = () => {
@@ -15,14 +24,14 @@ export const getAllDogs = () => {
 
 export const getTemperaments = () => {
   return async (dispatch) => {
-    const json = await axios(`${url}/temperaments`)
-    const temperaments = json.data
+    const json = await axios(`${url}/temperaments`);
+    const temperaments = json.data;
     dispatch({
       type: GET_TEMPERAMENTS,
-      payload: temperaments
-    })
-  }
-}
+      payload: temperaments,
+    });
+  };
+};
 
 export const searchDogs = (name) => {
   return async (dispatch) => {
@@ -44,13 +53,30 @@ export const orderSort = (payload) => {
 export const filter = (payload) => {
   return {
     type: FILTER,
-    payload
+    payload,
   };
 };
 
 export const filterTemperament = (payload) => {
   return {
     type: TEMPERAMENT,
-    payload
-  }
+    payload,
+  };
+};
+
+export const getDetail = (id) => {
+  return async (dispatch) => {
+    const json = await axios(`${url}/dogs/${id}`);
+    dispatch({
+      type: GET_DETAILS,
+      payload: json.data,
+    });
+  };
+};
+
+export function getClean() {
+  return {
+    type: GET_CLEAN,
+    payload: [],
+  };
 }

@@ -7,7 +7,7 @@ const SearchBar = () => {
   const [input, setInput] = useState("");
   const filterSearch = useSelector((state) => state.filterSearch);
   const dispatch = useDispatch();
-  const [clear, setClear] = useState(filterSearch === "" ? false : true);
+  const [clear, setClear] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const SearchBar = () => {
         type="text"
         value={input}
         className="searchInput"
-        placeholder="Buscar..."
+        placeholder="Search..."
         onChange={(e) => setInput(e.target.value)}
         onFocus={() => setClear(false)}
       ></input>

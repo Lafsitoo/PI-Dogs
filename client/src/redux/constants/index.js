@@ -4,6 +4,8 @@ export const ORDER_SORT = "ORDER_SORT";
 export const FILTER = "FILTER";
 export const TEMPERAMENT = "TEMPERAMENT";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
+export const GET_DETAILS = "GET_DETAILS"
+export const GET_CLEAN = "GET_CLEAN"
 
 const sortOrderNameAsc = (a, b) => {
   let nameA = a.name.toLowerCase();

@@ -4,7 +4,10 @@ import {
   ORDER_SORT,
   order,
   FILTER,
-  TEMPERAMENT, GET_TEMPERAMENTS
+  TEMPERAMENT,
+  GET_TEMPERAMENTS,
+  GET_DETAILS,
+  GET_CLEAN
 } from "../constants";
 
 const initialState = {
@@ -12,6 +15,7 @@ const initialState = {
   allDogs: [],
   temperaments: [],
   order: order[0],
+  detail: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,8 +30,8 @@ const rootReducer = (state = initialState, action) => {
     case GET_TEMPERAMENTS:
       return {
         ...state,
-        temperaments: action.payload
-      }
+        temperaments: action.payload,
+      };
 
     case SEARCH_DOGS:
       return {
@@ -58,13 +62,23 @@ const rootReducer = (state = initialState, action) => {
       const filterByTemperament =
         action.payload === "Default"
           ? temperament
-          : temperament.filter((e) =>
-              e.temperament?.includes(action.payload)
-            );
-            return {
-              ...state,
-              dogs: filterByTemperament
-            }
+          : temperament.filter((e) => e.temperament?.includes(action.payload));
+      return {
+        ...state,
+        dogs: filterByTemperament,
+      };
+
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload,
+      };
+
+      case GET_CLEAN:
+        return {
+          ...state,
+          detail: action.payload
+        }
 
     default:
       return {

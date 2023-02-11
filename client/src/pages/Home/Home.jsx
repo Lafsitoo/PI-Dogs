@@ -38,7 +38,7 @@ const Home = () => {
       <NavBar />
       <div>
         <Link to="/form">
-          <button>Crear</button>
+          <button>Create</button>
         </Link>
       </div>
       <SearchBar />
