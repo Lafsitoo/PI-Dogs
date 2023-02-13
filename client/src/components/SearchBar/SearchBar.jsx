@@ -1,31 +1,32 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchDogs } from "../../redux/actions";
 import "./SearchBar.css";
 
 const SearchBar = () => {
+  // Input de busqueda
   const [input, setInput] = useState("");
-  const filterSearch = useSelector((state) => state.filterSearch);
-  const dispatch = useDispatch();
+  // La "X" que borra nuestro input
   const [clear, setClear] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchDogs(input));
+    // Actualiza el estado de "clear" para mostrar el botón "X"
     setClear(true);
   };
 
   const handleClear = () => {
     setInput("");
-    setClear(false);
     dispatch(searchDogs(""));
+    // Ocultar la "X"
+    setClear(false);
   };
 
   return (
     <form className="searchBar" onSubmit={handleSubmit}>
-      {!clear && (
-        <i className="fi fi-br-search" onClick={handleSubmit}></i>
-      )}
+      {!clear && <i className="fi fi-br-search" onClick={handleSubmit}></i>}
       <input
         type="text"
         value={input}

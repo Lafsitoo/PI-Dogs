@@ -6,12 +6,14 @@ import "./Detail.css";
 
 const Detail = () => {
   const dispatch = useDispatch();
+  // Obtener la ID
   const { id } = useParams();
   const dog = useSelector((state) => state.detail);
 
+  // Petición que se ejecuta cuando se monta el componente
   useEffect(() => {
     dispatch(getDetail(id));
-    dispatch(getClean())
+    dispatch(getClean());
   }, [dispatch, id]);
 
   return (
