@@ -16,7 +16,7 @@ const Home = () => {
   /* PAGINATION */
   // Cantidad de cards por página
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardPerPage, setCardPerPage] = useState(8);
+  const [cardPerPage] = useState(8);
   // Calculos de primer y ultima card
   const indexOfLastCard = currentPage * cardPerPage; // 8
   const indexOfFirstCard = indexOfLastCard - cardPerPage; // 1
@@ -55,8 +55,8 @@ const Home = () => {
       <div>
         {currentDogs?.map((e) => {
           return (
-            <Link to={`/dogs/${e.id}`}>
-              <Card key={e.id} name={e.name} image={e.image} temperament={e.temperament} weight={e.weight}/>
+            <Link to={`/dogs/${e.id}`} key={e.id}>
+              <Card name={e.name} image={e.image} temperament={e.temperament} weight={e.weight}/>
             </Link>
           );
         })}
