@@ -10,6 +10,8 @@ const validateDogs = async (req, res, next) => {
     temperament
   } = req.body;
 
+  console.log(req.body)
+
   //VALIDACIÓN
   if (
     !(name,

@@ -82,6 +82,7 @@ router.post("/", validateDogs, async (req, res) => {
     res.status(201).send(`${name} Creado con Éxito`);
   } catch (error) {
     res.status(400).send({ error: "Error al crear nuevo perro" });
+    console.error(error.message)
   }
 });
 

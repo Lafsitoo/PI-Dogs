@@ -23,8 +23,8 @@ const Detail = () => {
           <h2>{dog[0].name}</h2>
           <img src={dog[0].image} alt="" />
           <p>Age: {dog[0].life_span}</p>
-          <p>Weight: {dog[0].weight}</p>
-          <p>Heigth: {dog[0].height}</p>
+          <p>Weight: {dog[0].weight} cm</p>
+          <p>Heigth: {dog[0].height} kg</p>
           <p>Temperaments: {dog[0].temperament}</p>
         </div>
       ) : (
