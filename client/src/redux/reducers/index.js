@@ -7,7 +7,8 @@ import {
   TEMPERAMENT,
   GET_TEMPERAMENTS,
   GET_DETAILS,
-  GET_CLEAN
+  GET_CLEAN,
+  POST_DOG,
 } from "../constants";
 
 const initialState = {
@@ -74,11 +75,16 @@ const rootReducer = (state = initialState, action) => {
         detail: action.payload,
       };
 
-      case GET_CLEAN:
-        return {
-          ...state,
-          detail: action.payload
-        }
+    case GET_CLEAN:
+      return {
+        ...state,
+        detail: action.payload,
+      };
+
+    case POST_DOG:
+      return {
+        ...state,
+      };
 
     default:
       return {

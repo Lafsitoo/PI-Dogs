@@ -6,6 +6,7 @@ export const TEMPERAMENT = "TEMPERAMENT";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
 export const GET_DETAILS = "GET_DETAILS"
 export const GET_CLEAN = "GET_CLEAN"
+export const POST_DOG = "POST_DOG"
 
 const sortOrderNameAsc = (a, b) => {
   let nameA = a.name.toLowerCase();

@@ -74,9 +74,16 @@ export const getDetail = (id) => {
   };
 };
 
-export function getClean() {
+export const getClean = () => {
   return {
     type: GET_CLEAN,
     payload: [],
   };
+}
+
+export const postDog = (payload) => {
+  return async (dispatch) => {
+    const post = await axios.post(`${url}/dogs`, payload)
+    return post
+  }
 }
