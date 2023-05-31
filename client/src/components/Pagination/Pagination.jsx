@@ -9,9 +9,16 @@ const Pagination = ({ cardPerPage, allDogs, pagination, currentPage }) => {
   }
 
   return (
-    <nav>
-      <div>
-        <div>
+    <nav className="container">
+      <ul>
+        <div className="list">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => pagination((currentPage = 1))}
+          >{`<<`}</button>
+        </div>
+
+        <div className="list">
           <button
             disabled={currentPage === 1}
             onClick={() => pagination(currentPage - 1)}
@@ -20,30 +27,16 @@ const Pagination = ({ cardPerPage, allDogs, pagination, currentPage }) => {
           </button>
         </div>
 
-        <div>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => pagination((currentPage = 1))}
-          >{`<<`}</button>
-        </div>
-
         {/* {pageNumbers?.map((number) => (
           <li key={number}>
             <button onClick={() => pagination(number)}>{number}</button>
           </li>
         ))} */}
-        <div>
+        <div className="list">
           <button>{currentPage}</button>
         </div>
 
-        <div>
-          <button
-            disabled={currentPage === pageNumbers.length}
-            onClick={() => pagination((currentPage = pageNumbers.length))}
-          >{`>>`}</button>
-        </div>
-
-        <div>
+        <div className="list">
           <button
             disabled={currentPage === pageNumbers.length}
             onClick={() => pagination(currentPage + 1)}
@@ -51,7 +44,14 @@ const Pagination = ({ cardPerPage, allDogs, pagination, currentPage }) => {
             next
           </button>
         </div>
-      </div>
+
+        <div className="list">
+          <button
+            disabled={currentPage === pageNumbers.length}
+            onClick={() => pagination((currentPage = pageNumbers.length))}
+          >{`>>`}</button>
+        </div>
+      </ul>
     </nav>
   );
 };

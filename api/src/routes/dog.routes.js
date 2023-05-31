@@ -61,7 +61,12 @@ router.post("/", validateDogs, async (req, res) => {
     createdInDb,
   } = req.body;
   try {
-    // Crea una nuevo perro en la base de datos
+    // Busca un objeto de temperamento existente con el nombre proporcionado
+    const existingTemperament = await Temperament.findOne({
+      where: { name: temperament },
+    });
+    // Si el objeto de temperamento existe, lo asociamos con el perro
+    // Si no existe, lo creamos y luego lo asociamos con el perro
     const dog = await Dog.create({
       name,
       height,
@@ -69,15 +74,12 @@ router.post("/", validateDogs, async (req, res) => {
       life_span,
       createdInDb,
     });
-
-    // Busco temperament en BD
-    const temperamentInBD = await Temperament.findAll({
-      where: { name: temperament },
-    });
-
-    // Asociamos el Dog al Temperament para completarlo
-    dog.addTemperament(temperamentInBD);
-
+    if (existingTemperament) {
+      await dog.setTemperaments(existingTemperament.id);
+    } else {
+      const newTemperament = await Temperament.create({ name: temperament });
+      await dog.setTemperaments(newTemperament.id);
+    }
     // Devolvemos una respuesta de éxito
     res.status(201).send(`${name} Creado con Éxito`);
   } catch (error) {

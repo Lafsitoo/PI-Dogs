@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, getClean } from "./../../redux/actions/index";
 import "./Detail.css";
@@ -17,7 +17,8 @@ const Detail = () => {
   }, [dispatch, id]);
 
   return (
-    <div>
+    <div className="dog-container">
+    <Link className="dog-back" to="/home">Back</Link>
       {dog[0] ? (
         <div className="dog-details">
           <h2>{dog[0].name}</h2>

@@ -1,0 +1,11 @@
+.container{}
+
+.label {
+    padding: 0 10px 0 10px;
+    letter-spacing: 0.05rem;
+    font-weight: 500;
+    font-size: 17px;
+    border-radius: 500px;
+    overflow: hidden;
+    color: rgb(34, 15, 2);
+}

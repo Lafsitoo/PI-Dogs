@@ -51,10 +51,10 @@
   padding-top: 20px;
 }
 
-.name {
+.name-base {
   font-weight: 600;
 }
 
-.name:hover {
+.name-base:hover {
   cursor: pointer;
 }

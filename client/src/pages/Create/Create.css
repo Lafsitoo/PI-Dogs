@@ -1,0 +1,71 @@
+.formulario {
+  background-color: #ffefe3;
+  opacity: 0.8;
+  background-image: linear-gradient(135deg, #fff4ec 25%, transparent 25%),
+    linear-gradient(225deg, #fff4ec 25%, transparent 25%),
+    linear-gradient(45deg, #fff4ec 25%, transparent 25%),
+    linear-gradient(315deg, #fff4ec 25%, #ffefe3 25%);
+  background-position: 28px 0, 28px 0, 0 0, 0 0;
+  background-size: 56px 56px;
+  background-repeat: repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.back {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0.9rem 2rem;
+  margin: 0;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  font-size: 17px;
+  border-radius: 500px;
+  overflow: hidden;
+  color: rgb(34, 15, 2);
+  background: #ffe3ce;
+}
+
+.form-base{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #FFE3CE;
+    padding: 20px;
+    border: 1px solid #FFC08B;
+    border-radius: 10px;
+    color: rgb(34, 15, 2);
+    text-align: center;
+    font-size: 20px;
+    gap: 40px;
+}
+
+.submit {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.9rem 2rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.05rem;
+    font-weight: 500;
+    font-size: 17px;
+    border-radius: 500px;
+    overflow: hidden;
+    color: rgb(34, 15, 2);
+    background: #FFAA62;
+}
+
+.submit:disabled{
+    color: rgb(59, 52, 47);
+    background: #FFD5B3;
+}

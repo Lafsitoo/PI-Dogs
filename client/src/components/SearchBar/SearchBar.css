@@ -1,5 +1,12 @@
 @import "~@flaticon/flaticon-uicons/css/all/all";
 
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 35px;
+}
+
 .searchBar {
   background-color: var(--color-grey3);
   height: 40px;

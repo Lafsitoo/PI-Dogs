@@ -44,6 +44,12 @@ const sortWeightDesc = (a, b) => {
   return 0;
 };
 
+const sortLifeSpan = (a) => {
+  let lifeA = a.life_span.split(" - ").map(e => Number(e))
+  let lifeB = 12
+  if (lifeA[0] > lifeB) return 1;
+}
+
 export const order = [
   {
     id: 0,
@@ -65,4 +71,9 @@ export const order = [
     name: "Weight (High to low)",
     sort: sortWeightDesc,
   },
+  {
+    id: 4,
+    name: "Vida mayor a 12",
+    sort: sortLifeSpan
+  }
 ];

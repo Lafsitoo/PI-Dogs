@@ -58,20 +58,27 @@ const Create = () => {
       life_spanNumberMax,
     } = newForm;
 
-    if (heightMin > heightMax || weightMin > weightMax || life_spanNumberMin > life_spanNumberMax) {
-      return alert('Los valores mínimos no pueden ser mayores que los valores máximos');
+    if (
+      heightMin > heightMax ||
+      weightMin > weightMax ||
+      life_spanNumberMin > life_spanNumberMax
+    ) {
+      return alert(
+        "Los valores mínimos no pueden ser mayores que los valores máximos"
+      );
     }
 
     const newHeight = heightMin + " - " + heightMax;
     const newWeight = weightMin + " - " + weightMax;
-    const newLifeSpan = life_spanNumberMin + " - " + life_spanNumberMax + " years";
+    const newLifeSpan =
+      life_spanNumberMin + " - " + life_spanNumberMax + " years";
     const newValues = {
       ...newForm,
       height: newHeight,
       weight: newWeight,
       life_span: newLifeSpan,
       temperament: newForm.temperament.join(", "),
-  };  
+    };
     dispatch(postDog(newValues));
     setNewForm({ ...initialValues });
   };
@@ -85,13 +92,13 @@ const Create = () => {
   }, [dispatch]);
 
   return (
-    <main>
-      <Link to="/home">
-        <button>Back</button>
+    <main className="formulario">
+      <Link className="back" to="/home">
+        Back
       </Link>
-      <form>
+      <form className="form-base">
         <div>
-          <label>Name:</label>
+          <label>Name: </label>
           <input
             type="text"
             name="name"
@@ -104,7 +111,7 @@ const Create = () => {
         </div>
 
         <div>
-          <label>Height (cm):</label>
+          <label>Height (cm): </label>
           <input
             type="number"
             name="heightMin"
@@ -134,11 +141,12 @@ const Create = () => {
         </div>
 
         <div>
-          <label>Weight (kg):</label>
+          <label>Weight (kg): </label>
           <input
             type="number"
             name="weightMin"
             autoComplete="off"
+            defaultValue={1}
             min={1}
             max={100}
             value={newForm.weightMin}
@@ -149,6 +157,7 @@ const Create = () => {
             type="number"
             name="weightMax"
             autoComplete="off"
+            defaultValue={20}
             min={1}
             max={100}
             value={newForm.weightMax}
@@ -164,7 +173,7 @@ const Create = () => {
         </div>
 
         <div>
-          <label>Life span (age):</label>
+          <label>Life span (age): </label>
           <input
             type="number"
             name="life_spanNumberMin"
@@ -194,7 +203,7 @@ const Create = () => {
         </div>
 
         <div>
-          <label>Temperament:</label>
+          <label>Temperament: </label>
           <select
             name="temperament"
             value={newForm.temperament}
@@ -225,12 +234,12 @@ const Create = () => {
                   <li key={i}>
                     {temp}
                     <button
+                      type="button"
                       onClick={() => {
-                        setNewForm({
-                          ...newForm,
-                          temperament: newForm.temperament.filter(
-                            (t) => t !== temp
-                          ),
+                        setNewForm((prevState) => {
+                          const newTemperament = [...prevState.temperament];
+                          newTemperament.splice(i, 1);
+                          return { ...prevState, temperament: newTemperament };
                         });
                       }}
                     >
@@ -246,6 +255,7 @@ const Create = () => {
         <div>
           <br></br>
           <button
+            className="submit"
             type="submit"
             disabled={Object.keys(errors).length > 0}
             onClick={(e) => handleSubmit(e)}

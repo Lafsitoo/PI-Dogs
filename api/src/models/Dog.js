@@ -19,6 +19,8 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.STRING,
+        defaultValue:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwt8TGiLtJ1N5SXygH9EkF9rIXe3zVtmM3gg&usqp=CAU",
       },
       height: {
         type: DataTypes.STRING,

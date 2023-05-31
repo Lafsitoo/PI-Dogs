@@ -36,10 +36,16 @@ const Home = () => {
   return (
     <main className="home">
       <NavBar />
-      
-      <SearchBar />
 
-      <OrderAndFilter />
+      <div className="search">
+        <div className="form">
+          <SearchBar />
+        </div>
+      </div>
+
+      <div className="order">
+        <OrderAndFilter />
+      </div>
 
       <Pagination
         cardPerPage={cardPerPage}

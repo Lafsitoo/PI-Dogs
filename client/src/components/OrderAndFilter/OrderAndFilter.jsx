@@ -12,7 +12,9 @@ const OrderAndFilter = () => {
   const [filterOption, setFilterOption] = useState("");
   const [temperament, setTemperament] = useState("Default");
   // Obtener los names de temperaments desde el estado inicial
-  const allTemperaments = useSelector(state => state.temperaments)
+  const allTemperaments = useSelector((state) => state.temperaments);
+  const dogLife = useSelector(state => state.dogs)
+  const [dogVide, setDogVide] = useState(dogLife)
 
   // Cambiar la selección de ordenamiento
   const handleOrder = (e) => {
@@ -31,54 +33,66 @@ const OrderAndFilter = () => {
   };
 
   const handleTemperament = (e) => {
-    setTemperament(e.target.value)
-    dispatch(filterTemperament(e.target.value))
+    setTemperament(e.target.value);
+    dispatch(filterTemperament(e.target.value));
+  };
+
+  const handleLife = (e) => {
   }
 
   return (
+    <div className="container">
+
     <div>
-      {/* Etiqueta de label para el control desplegable */}
-      <label htmlFor="sort">Sort by:</label>
-      {/* Control desplegable */}
-      <select id="sort" value={orderOption} onChange={handleOrder}>
-        {/* Renderizar las opciones de ordenamiento */}
-        {order.map((option, index) => (
-          <option key={option.id} value={index}>
-            {option.name}
-          </option>
-        ))}
-      </select>
+      <button>
+      {}
+      Vida + 12
+      </button>
+    </div>
 
-      {/* Nuevo control desplegable para el filtrado */}
-      <label htmlFor="filter">Filter by:</label>
-      <select id="filter" value={filterOption} onChange={handleFilter}>
-        <option key={"All dogs"} value="All dogs">
-          All dogs
-        </option>
-        <option key={"Created by Users"} value="Created by Users">
-          Created by Users
-        </option>
-        <option key={"Created by API"} value="Created by API">
-          Created by API
-        </option>
-      </select>
+      <div className="label">
+        <label htmlFor="sort">Sort by: </label>
+        <select className="pizzo" id="sort" value={orderOption} onChange={handleOrder}>
+          {order.map((option, index) => (
+            <option key={option.id} value={index}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      {/* Nuevo control desplegable para el filtrado */}
-      <label htmlFor="filterTemperament">Temperament by:</label>
-      <select
-        id="filterTemperament"
-        value={temperament}
-        onChange={handleTemperament}
-      >
-        <option key={"All temperaments"} value="All temperaments">
-          Default
-        </option>
-        {allTemperaments.map((option) => (
-          <option key={option.id} value={option.name}>
-            {option.name}
+      <div className="label">
+        <label htmlFor="filter">Filter by: </label>
+        <select id="filter" value={filterOption} onChange={handleFilter}>
+          <option key={"All dogs"} value="All dogs">
+            All dogs
           </option>
-        ))}
-      </select>
+          <option key={"Created by Users"} value="Created by Users">
+            Created by Users
+          </option>
+          <option key={"Created by API"} value="Created by API">
+            Created by API
+          </option>
+        </select>
+      </div>
+
+      <div className="label">
+        <label htmlFor="filterTemperament">Temperament by: </label>
+        <select
+          id="filterTemperament"
+          value={temperament}
+          onChange={handleTemperament}
+        >
+          <option key={"All temperaments"} value="All temperaments">
+            Default
+          </option>
+          {allTemperaments.map((option) => (
+            <option key={option.id} value={option.name}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };
