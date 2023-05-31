@@ -2,12 +2,20 @@ import "./Card.css";
 
 const Card = ({ name, image, temperament, weight }) => {
   return (
-    <div className="card">
-      <h3>{name}</h3>
-      <img src={image} alt="dog-img" />
-      <h5>{weight}</h5>
-      <h5>{temperament}</h5>
-    </div>
+    // <section className="card-container">
+
+      <div class="card">
+        <img className="card-image" src={image} alt="" />
+        <div class="category">{name}</div>
+        <div class="heading">
+        Weight: {weight} kg
+          <div class="author">
+            <span class="name">{temperament}</span>
+          </div>
+        </div>
+      </div>
+
+    // </section>
   );
 };
 

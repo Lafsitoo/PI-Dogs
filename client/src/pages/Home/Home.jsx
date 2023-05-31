@@ -6,8 +6,8 @@ import { Pagination } from "../../components/Pagination/Pagination";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllDogs, getTemperaments } from "../../redux/actions";
-import "./Home.css";
 import { OrderAndFilter } from "../../components/OrderAndFilter/OrderAndFilter";
+import "./Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,16 +31,12 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllDogs());
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
 
   return (
     <main className="home">
       <NavBar />
-      <div>
-        <Link to="/form">
-          <button>Create</button>
-        </Link>
-      </div>
+      
       <SearchBar />
 
       <OrderAndFilter />
@@ -51,16 +47,22 @@ const Home = () => {
         pagination={pagination}
         currentPage={currentPage}
       />
-
-      <div>
-        {currentDogs?.map((e) => {
-          return (
-            <Link to={`/dogs/${e.id}`} key={e.id}>
-              <Card name={e.name} image={e.image} temperament={e.temperament} weight={e.weight}/>
-            </Link>
-          );
-        })}
-      </div>
+      <section className="gallery-container">
+        <div className="gallery">
+          {currentDogs?.map((e) => {
+            return (
+              <Link to={`/dogs/${e.id}`} key={e.id}>
+                <Card
+                  name={e.name}
+                  image={e.image}
+                  temperament={e.temperament}
+                  weight={e.weight}
+                />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
     </main>
   );
 };

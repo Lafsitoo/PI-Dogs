@@ -1,31 +1,60 @@
-/* From uiverse.io by @Giuxpro */
+
+
 .card {
-    width: 20em;
-    height: 20em;
-    background: rgb(243, 241, 241);
-    transition: all 300ms;
-    border-radius: 10px;
-    margin: 5em;
-  }
-  
-  .card:hover {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-  
-  .card img {
-      display: flex;
-      justify-content: left;
-      width: 100%;
-      height: 95%;
-      border-radius: 10px;
-  }
-  
-  .card h3 {
-      color: var(--color-gray-medium);
-      font-size: 1.5em;
-      margin-top: 0px;
-      margin-left: 0px;
-      height: 15%;
-  }
-  
+  width: 100%; height: 90%;
+  background: #FFEFE3;
+  padding: .2em;
+  border-radius: 6px;
+  margin: 10px;
+  border: 2px solid #FFD5B3;
+}
+
+.card-image {
+  background-color: rgb(236, 236, 236);
+  width: 100%;
+  height: 65%;
+  border-radius: 6px 6px 0 0;
+}
+
+.card-image:hover {
+  transform: scale(0.98);
+}
+
+.category {
+  text-transform: uppercase;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #130A01;
+  padding: 10px 7px 0;
+  text-align: center;
+}
+
+.category:hover {
+  cursor: pointer;
+}
+
+.heading {
+  font-weight: 500;
+  color: rgb(88, 87, 87);
+  padding: 15px;
+  text-align: center;
+}
+
+.heading:hover {
+  cursor: pointer;
+}
+
+.author {
+  color: gray;
+  font-weight: 400;
+  font-size: 11px;
+  padding-top: 20px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.name:hover {
+  cursor: pointer;
+}

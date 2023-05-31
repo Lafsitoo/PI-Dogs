@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchDogs } from "../../redux/actions";
-import "./SearchBar.css";
+// import "./SearchBar.css";
 
 const SearchBar = () => {
   // Input de busqueda

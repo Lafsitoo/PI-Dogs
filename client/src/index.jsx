@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import reportWebVitals from "./utils/reportWebVitals";
-import "./index.css";
+import "./index.css"
 
 const cointainer = document.getElementById("root"); // Referencia al elemento  en el DOM
 const root = createRoot(cointainer); // Crea una nueva raíz React

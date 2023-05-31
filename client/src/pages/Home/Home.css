@@ -1,0 +1,21 @@
+.home {
+  background-color: #fff9f4;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 35px;
+  }
+
+.gallery {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 25px;
+  grid-row-gap: 0px;
+}

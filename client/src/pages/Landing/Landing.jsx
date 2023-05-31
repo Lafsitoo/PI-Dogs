@@ -3,10 +3,10 @@ import "./Landing.css";
 
 const Landing = () => {
   return (
-    <div>
-      <Link to="/home">
-        <button>Ingresar</button>
-      </Link>
+    <div className="landing-container">
+        <Link to="/home">
+          <button className="landing-button">Lets go</button>
+        </Link>
     </div>
   );
 };
